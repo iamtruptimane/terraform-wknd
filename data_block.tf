@@ -1,15 +1,28 @@
 provider "aws" {
     region = var.region
 }
-resource "aws_instance" "us-east-server" {
+data "aws_security_group" "aws-sg" {
+  filter {
+    name = "vpc-id"
+    values = [ "vpc-0cbbdb15bbcd7d653" ]
+  }
+  filter {
+    name = "group-name"
+    values = [ "web-sg" ]
+  }
+}
+resource "aws_instance" "web-server" {
   #this is how you can refer resources
   ami = "ami-053a45fff0a704a47"
   instance_type = var.instance_type
   key_name = var.key_name
   availability_zone = "us-east-1b"
   tags = {
-    Name = "us-east-server"
+    Name = "web-server"
   }
+  vpc_security_group_ids = [data.aws_security_group.aws-sg.id]
+  #vpc_security_group_ids = ["sg-0ef0726f3c7819b49", "sg-09a34692654e6f350"]
+
 }
 variable "region" {
     description = "please enter region"

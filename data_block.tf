@@ -1,3 +1,10 @@
+terraform {
+  backend "s3" {
+    bucket = "terraform-backend-s3-t23-bucket "
+    key = "terraform.tfstate"
+    region = "us-east-1"
+  }
+}
 provider "aws" {
     region = var.region
 }
@@ -35,6 +42,10 @@ variable "instance_type" {
 }
 variable "key_name" {
     default = "server-key"
+}
+
+output "instance_dns" {
+  value = aws_instance.web-server.public_dns
 }
 
 

@@ -36,10 +36,5 @@ variable "instance_type" {
 variable "key_name" {
     default = "server-key"
 }
-output "demo" {
-    value = "hello world"
-}
-output "instnace_id" {
-  value = aws_instance.us-east-server.id
-}
+
 

@@ -11,10 +11,10 @@ variable "vpc_cidr" {
   default = "10.0.0.0/16"
 }
 variable "pri_sub_cidr" {
-  default = "10.12.0.0/20"
+  default = "10.0.10.0/24"
 }
 variable "pub_sub_cidr" {
-  default = "10.10.0.0/20"
+  default = "10.0.20.0/24"
 }
 variable "project" {
   default = "IEC"

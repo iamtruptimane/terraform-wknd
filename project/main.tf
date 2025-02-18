@@ -109,7 +109,7 @@ resource "aws_instance" "server2" {
   ami = var.ami
   instance_type = var.instance_type
   key_name = var.key
-  subnet_id = aws_subnet.public_sub.id
+  subnet_id = aws_subnet.private_sub.id
   availability_zone = var.az1
   vpc_security_group_ids = [aws_vpc.my_vpc.default_security_group_id, aws_security_group.sg1.id]
   tags = {
